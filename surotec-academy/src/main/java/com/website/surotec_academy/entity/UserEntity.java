@@ -12,6 +12,12 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "document_type", nullable = false)
+    private String documentType;
+
+    @Column(name = "document_number", nullable = false)
+    private String documentNumber;
+
     @Column(name = "first_name", nullable = false)
     private String firstName;
 
@@ -35,7 +41,8 @@ public class UserEntity {
     @Column(nullable = false)
     private Integer status;
 
-    public UserEntity() {}
+    public UserEntity() {
+    }
 
     public UserEntity(String firstName, String lastName, String username, String password, String email) {
         this.firstName = firstName;
@@ -43,7 +50,7 @@ public class UserEntity {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.status = 1 ;
+        this.status = 1;
     }
 
 
@@ -117,6 +124,22 @@ public class UserEntity {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getDocumentType() {
+        return documentType;
+    }
+
+    public void setDocumentType(String documentType) {
+        this.documentType = documentType;
+    }
+
+    public String getDocumentNumber() {
+        return documentNumber;
+    }
+
+    public void setDocumentNumber(String documentNumber) {
+        this.documentNumber = documentNumber;
     }
 
     @Override

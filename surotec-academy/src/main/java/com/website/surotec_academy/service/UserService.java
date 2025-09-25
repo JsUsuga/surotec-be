@@ -1,5 +1,6 @@
 package com.website.surotec_academy.service;
 
+import com.website.surotec_academy.domain.dto.request.request.UserDto;
 import com.website.surotec_academy.entity.UserEntity;
 
 import java.util.List;
@@ -7,9 +8,9 @@ import java.util.List;
 public interface UserService {
 
     List<UserEntity> getAllUsers();
-    Void createUser(UserEntity UserDto);
-    Void updateUser(UserEntity UserDto);
-    Void deleteUser(int id);
+    UserDto createUser(UserDto UserDto);
+    void updateUser(UserDto UserDto);
+    void deleteUser(int id);
 
 
 }

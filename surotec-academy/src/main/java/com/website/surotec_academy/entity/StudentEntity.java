@@ -1,7 +1,6 @@
 package com.website.surotec_academy.entity;
 
 
-import com.website.surotec_academy.classification.StudentStatus;
 import jakarta.persistence.*;
 
 
@@ -14,7 +13,7 @@ public class StudentEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column
-    private StudentStatus status;
+    private Integer status;
     @Column (name = "date_create")
     private String dateCreate;
     @Column (name = "date_update")
@@ -26,7 +25,7 @@ public class StudentEntity {
 
     public StudentEntity() {
     }
-    public StudentEntity(Integer id, Integer idUser, StudentStatus status, String dateCreate, String dateUpdate) {
+    public StudentEntity(Integer id, Integer idUser, Integer status, String dateCreate, String dateUpdate) {
         this.id = id;
         this.status = status;
         this.dateCreate = dateCreate;
@@ -67,11 +66,11 @@ public class StudentEntity {
     }
 
 
-    public StudentStatus getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(StudentStatus status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
