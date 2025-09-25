@@ -1,7 +1,10 @@
 package com.website.surotec_academy.entity;
 
 
+import com.website.surotec_academy.enums.StudentStatus;
 import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
 
 
 @Entity
@@ -11,13 +14,14 @@ public class StudentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    @Column
-    private Integer status;
+    private Long id;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private StudentStatus status = StudentStatus.ACTIVE;
     @Column (name = "date_create")
-    private String dateCreate;
+    private LocalDateTime dateCreate;
     @Column (name = "date_update")
-    private String dateUpdate;
+    private LocalDateTime dateUpdate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_user", referencedColumnName = "id", nullable = false)
@@ -25,17 +29,14 @@ public class StudentEntity {
 
     public StudentEntity() {
     }
-    public StudentEntity(Integer id, Integer idUser, Integer status, String dateCreate, String dateUpdate) {
+
+    public StudentEntity(Long id, StudentStatus status, LocalDateTime dateCreate, LocalDateTime dateUpdate,  UserEntity user) {
         this.id = id;
         this.status = status;
         this.dateCreate = dateCreate;
         this.dateUpdate = dateUpdate;
+        this.user  = user;
     }
-
-
-
-    // Getters y setters
-
 
     public UserEntity getUser() {
         return user;
@@ -45,42 +46,35 @@ public class StudentEntity {
         this.user = user;
     }
 
-
-    public String getDateUpdate() {
+    public LocalDateTime getDateUpdate() {
         return dateUpdate;
     }
 
-
-    public void setDateUpdate(String dateUpdate) {
+    public void setDateUpdate(LocalDateTime dateUpdate) {
         this.dateUpdate = dateUpdate;
     }
 
-
-    public String getDateCreate() {
+    public LocalDateTime getDateCreate() {
         return dateCreate;
     }
 
-
-    public void setDateCreate(String dateCreate) {
+    public void setDateCreate(LocalDateTime dateCreate) {
         this.dateCreate = dateCreate;
     }
 
-
-    public Integer getStatus() {
+    public StudentStatus getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(StudentStatus status) {
         this.status = status;
     }
 
-
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

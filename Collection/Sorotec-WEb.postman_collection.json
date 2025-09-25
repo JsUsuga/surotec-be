@@ -1,0 +1,281 @@
+{
+	"info": {
+		"_postman_id": "bdf4a8aa-6d79-46bb-85f4-54074b0aebc9",
+		"name": "Sorotec-WEb",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "33293729",
+		"_collection_link": "https://britishairways.postman.co/workspace/PersonalWorkSpace~a7eb8c26-b81d-434c-820d-e7894290d0d3/collection/33293729-bdf4a8aa-6d79-46bb-85f4-54074b0aebc9?action=share&source=collection_link&creator=33293729"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "updateUser",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"documentType\": \"CC\",\n  \"documentNumber\": \"988881\",\n  \"firstName\": \"Chamon\",\n  \"lastName\": \"Josefo\",\n  \"username\": \"Jdcr\",\n  \"age\": \"1995-08-15\",\n  \"email\": \"ch.f@example.com\",\n  \"status\": \"ACTIVE\",\n  \"password\": \"123\",\n  \"dateCreate\": \"2025-06-01T10:30:00\",\n  \"dateUpdate\": \"2026-06-10T15:45:00\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8085/users/4"
+					},
+					"response": []
+				},
+				{
+					"name": "updateUser Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": "http://localhost:8085/users/1"
+					},
+					"response": []
+				},
+				{
+					"name": "CreateUser",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"documentType\": \"CC\",\n  \"documentNumber\": \"988881\",\n  \"firstName\": \"Chamo\",\n  \"lastName\": \"Josefo\",\n  \"username\": \"Jdcr\",\n  \"age\": \"1995-08-15\",\n  \"email\": \"ch.f@example.com\",\n  \"status\": \"ACTIVE\",\n  \"password\": \"123\",\n  \"dateCreate\": \"2025-06-01T10:30:00\",\n  \"dateUpdate\": \"2026-06-10T15:45:00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8085/users"
+					},
+					"response": []
+				},
+				{
+					"name": "getUserById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							}
+						],
+						"url": "http://localhost:8085/users/1"
+					},
+					"response": []
+				},
+				{
+					"name": "getUserByStatus",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8085/users/status?status=ACTIVE",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"users",
+								"status"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "ACTIVE",
+									"description": "'ACTIVE', 'INACTIVE'"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUsers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							}
+						],
+						"url": "http://localhost:8085/users"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Student",
+			"item": [
+				{
+					"name": "GetStudentById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": "http://localhost:8085/students/1"
+					},
+					"response": []
+				},
+				{
+					"name": "GetStudents",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": "http://localhost:8085/students"
+					},
+					"response": []
+				},
+				{
+					"name": "deleteStudent",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": "http://localhost:8085/students/1"
+					},
+					"response": []
+				},
+				{
+					"name": "GetStudentByState",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8085/students/?state=ACTIVE",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"students",
+								""
+							],
+							"query": [
+								{
+									"key": "state",
+									"value": "ACTIVE",
+									"description": "'ACTIVE', 'INACTIVE', 'SUSPENDED', 'GRADUADED'"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateStudent",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"idStudent\": 0,\n  \"status\": \"ACTIVE\",\n  \"dateCreate\": \"2025-09-25T16:16:05.931Z\",\n  \"dateUpdate\": \"2025-09-25T16:16:05.931Z\",\n  \"userDto\": {\n    \"idUser\": 0,\n    \"documentType\": \"TI\",\n    \"documentNumber\": \"09192912\",\n    \"firstName\": \"Mirian\",\n    \"lastName\": \"Patequive\",\n    \"username\": \"mpatequive\",\n    \"age\": \"2000-09-25\",\n    \"email\": \"mpive@imail.com\",\n    \"status\": \"ACTIVE\",\n    \"password\": \"1234\",\n    \"dateCreate\": \"2025-09-25T16:16:05.931Z\",\n    \"dateUpdate\": \"2025-09-25T16:16:05.931Z\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8085/students/2"
+					},
+					"response": []
+				},
+				{
+					"name": "CreateStudent",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"idStudent\": 0,\n  \"status\": \"ACTIVE\",\n  \"dateCreate\": \"2025-09-25T16:16:05.931Z\",\n  \"dateUpdate\": \"2025-09-25T16:16:05.931Z\",\n  \"userDto\": {\n    \"idUser\": 0,\n    \"documentType\": \"TI\",\n    \"documentNumber\": \"09192912\",\n    \"firstName\": \"Mirian\",\n    \"lastName\": \"Patequive\",\n    \"username\": \"mpatequive\",\n    \"age\": \"2000-09-25\",\n    \"email\": \"mpive@imail.com\",\n    \"status\": \"ACTIVE\",\n    \"password\": \"1234\",\n    \"dateCreate\": \"2025-09-25T16:16:05.931Z\",\n    \"dateUpdate\": \"2025-09-25T16:16:05.931Z\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8085/students"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
