@@ -109,6 +109,7 @@ public class StudentServiceImpl implements StudentService {
                 throw new RuntimeException("Student not found with id: " + id);
             }
             student.setStatus(StudentStatus.INACTIVE);
+            student.setDateUpdate(LocalDateTime.now());
             studentRepository.save(student);
         } catch (Exception e) {
             throw new RuntimeException("Error deleting student: " + e.getMessage(), e);

@@ -82,6 +82,7 @@ public class UserServiceImpl implements UserService {
                 throw new RuntimeException("User not found with idUser: " + id);
             }
             user.setStatus(UserStatus.INACTIVE);
+            user.setDateUpdate(LocalDateTime.now());
             userRepository.save(user);
         } catch (Exception e) {
             throw new RuntimeException("Error deleting user: " + e.getMessage(), e);
