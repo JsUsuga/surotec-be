@@ -16,6 +16,7 @@ public class NewsMapper {
                 .title(entity.getTitle())
                 .content(entity.getContent())
                 .publishDate(entity.getPublishDate())
+                .urlImage(entity.getImagesUrl())
                 .status(entity.getStatus())
                 .build();
     }
@@ -30,6 +31,7 @@ public class NewsMapper {
         entity.setTitle(dto.title());
         entity.setContent(dto.content());
         entity.setPublishDate(dto.publishDate());
+        entity.setImagesUrl(dto.urlImage());
         entity.setStatus(dto.status());
         return entity;
     }

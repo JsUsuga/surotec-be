@@ -24,5 +24,8 @@ public record NewsDto(
         LocalDateTime publishDate,
 
         @NotNull
+        String urlImage,
+
+        @NotNull
         NewsStatus status
 ) {}
