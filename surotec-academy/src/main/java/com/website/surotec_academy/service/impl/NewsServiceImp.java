@@ -29,7 +29,7 @@ public class NewsServiceImp implements NewsService {
     @Override
     public NewsCreatedDto createNews(NewsDto newsDto) {
         NewsEntity entity = NewsMapper.toEntity(newsDto);
-        entity.setPublishDate(LocalDateTime.now());
+//        entity.setPublishDate(LocalDateTime.now());
         NewsEntity saved = newsRepository.save(entity);
         return NewsMapper.toCreatedDto(saved);
     }
