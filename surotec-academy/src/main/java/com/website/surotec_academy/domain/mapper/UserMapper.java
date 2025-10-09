@@ -6,7 +6,9 @@ import com.website.surotec_academy.enums.DocumentType;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Period;
 import java.util.List;
 
 
@@ -22,6 +24,7 @@ public class UserMapper {
                 .firstName(entity.getFirstName())
                 .lastName(entity.getLastName())
                 .username(entity.getUsername())
+                .age(calculateAge(entity.getAge()))
                 .email(entity.getEmail())
                 .password(entity.getPassword())
                 .status(entity.getStatus())
@@ -29,6 +32,12 @@ public class UserMapper {
                 .dateUpdate(entity.getDateUpdate())
                 .build();
     }
+    private static int calculateAge(LocalDate birthDate) {
+        if (birthDate == null) return 0;
+        return Period.between(birthDate, LocalDate.now()).getYears();
+    }
+
+
 
     public static UserEntity toEntity(UserDto dto) {
         if (dto == null) return null;
@@ -43,7 +52,7 @@ public class UserMapper {
         entity.setFirstName(dto.firstName());
         entity.setLastName(dto.lastName());
         entity.setUsername(dto.username());
-        entity.setAge(dto.age());
+        entity.setAge(LocalDate.ofEpochDay(dto.age()));
         entity.setEmail(dto.email());
         entity.setPassword(dto.password());
         entity.setStatus(dto.status());
@@ -82,7 +91,7 @@ public class UserMapper {
         entity.setFirstName(dto.firstName());
         entity.setLastName(dto.lastName());
         entity.setUsername(dto.username());
-        entity.setAge(dto.age());
+        entity.setAge(LocalDate.ofEpochDay(dto.age()));
         entity.setEmail(dto.email());
         entity.setStatus(dto.status());
         entity.setPassword(dto.password());

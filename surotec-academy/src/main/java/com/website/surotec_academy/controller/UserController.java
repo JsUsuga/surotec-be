@@ -13,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.website.surotec_academy.domain.mapper.UserMapper;
+import java.util.stream.Collectors;
 
 import java.util.List;
 
@@ -30,16 +32,19 @@ public class UserController {
     @ApiResponse(responseCode = "200", description = "Usuario encontrado exitosamente", content = @Content(schema = @Schema(implementation = UserEntity.class)))
     @ApiResponse(responseCode = "404", description = "Usuario no encontrado")
     @GetMapping
-    public List<UserEntity> getUsers() {
-        return userService.getAllUsers();
+    public List<UserDto> getUsers() {
+        return userService.getAllUsers()
+                .stream()
+                .map(UserMapper::toDto)
+                .collect(Collectors.toList());
     }
 
     @Operation(summary = "Obtener un usuario por su ID", description = "Devuelve los detalles de un usuario específico basado en su identificador único.")
     @ApiResponse(responseCode = "200", description = "Usuario encontrado exitosamente", content = @Content(schema = @Schema(implementation = UserEntity.class)))
     @ApiResponse(responseCode = "404", description = "Usuario no encontrado")
     @GetMapping(value = "/{idUser}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public UserEntity getUserById(@PathVariable("idUser") Long id) {
-        return userService.getUserById(id);
+    public UserDto getUserById(@PathVariable("idUser") Long id) {
+        return UserMapper.toDto(userService.getUserById(id));
     }
 
     @Operation(

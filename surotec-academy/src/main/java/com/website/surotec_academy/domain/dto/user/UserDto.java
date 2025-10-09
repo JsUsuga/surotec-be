@@ -25,7 +25,7 @@ public record UserDto(
         @NotNull
         @jakarta.validation.constraints.Size(max = 30)
         String username,
-        LocalDate age,
+        int age,
         @NotNull
         @Email
         @jakarta.validation.constraints.Size(max = 100)
