@@ -1,7 +1,7 @@
 package com.website.surotec_academy.service;
 
-import com.website.surotec_academy.domain.dto.NewsCreatedDto;
-import com.website.surotec_academy.domain.dto.NewsDto;
+import com.website.surotec_academy.domain.dto.news.NewsCreatedDto;
+import com.website.surotec_academy.domain.dto.news.NewsDto;
 import com.website.surotec_academy.enums.NewsStatus;
 
 import java.util.List;
