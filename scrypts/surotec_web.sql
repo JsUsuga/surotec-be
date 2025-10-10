@@ -29,6 +29,16 @@ CREATE TABLE student (
     status ENUM('ACTIVE', 'INACTIVE', 'SUSPENDED', 'GRADUADED') NOT NULL DEFAULT 'ACTIVE',
     FOREIGN KEY (id) REFERENCES user(id) ON DELETE CASCADE
 );
+
+CREATE TABLE employee (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_user INT UNIQUE,
+    position VARCHAR(100),
+    area VARCHAR(100),
+    hire_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_user) REFERENCES user(id) ON DELETE CASCADE
+);
+
 CREATE TABLE donation (
     id INT PRIMARY KEY,
     id_user INT UNIQUE,
@@ -38,20 +48,19 @@ CREATE TABLE donation (
 );
 
 -- TABLAS DE ROLES
-CREATE TABLE role (
-    name VARCHAR(50) PRIMARY KEY
+CREATE TABLE roles (
+    id int primary key AUTO_INCREMENT,
+    name VARCHAR(50) unique,
+    description VARCHAR(200)
 );
 
+
 CREATE TABLE employee_role (
-	id INT,
-    employee_id INT unique,
-    role_name VARCHAR(50),
-    status boolean NOT NULL,
-    date_create datetime,
-    date_update datetime,
-    PRIMARY KEY (employee_id, role_name),
-    FOREIGN KEY (employee_id) REFERENCES user(id) ON DELETE CASCADE,
-    FOREIGN KEY (role_name) REFERENCES role(name) ON DELETE CASCADE
+	employee_id INT,
+    role_id int,
+    primary key (employee_id, role_id),
+    FOREIGN KEY (employee_id) REFERENCES employee(id) ON DELETE CASCADE,
+    FOREIGN KEY (role_id) REFERENCES roles(id) ON DELETE CASCADE
 );
 
 INSERT INTO user (
