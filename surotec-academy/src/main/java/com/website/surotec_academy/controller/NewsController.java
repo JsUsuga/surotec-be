@@ -1,8 +1,8 @@
 package com.website.surotec_academy.controller;
 
 
-import com.website.surotec_academy.domain.dto.NewsCreatedDto;
-import com.website.surotec_academy.domain.dto.NewsDto;
+import com.website.surotec_academy.domain.dto.news.NewsCreatedDto;
+import com.website.surotec_academy.domain.dto.news.NewsDto;
 import com.website.surotec_academy.enums.NewsStatus;
 import com.website.surotec_academy.service.NewsService;
 import jakarta.validation.Valid;

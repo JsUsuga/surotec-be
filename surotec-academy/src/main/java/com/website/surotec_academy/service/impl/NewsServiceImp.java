@@ -1,16 +1,14 @@
 package com.website.surotec_academy.service.impl;
 
-import com.website.surotec_academy.domain.dto.NewsCreatedDto;
-import com.website.surotec_academy.domain.dto.NewsDto;
+import com.website.surotec_academy.domain.dto.news.NewsCreatedDto;
+import com.website.surotec_academy.domain.dto.news.NewsDto;
 import com.website.surotec_academy.domain.mapper.NewsMapper;
 import com.website.surotec_academy.entity.NewsEntity;
 import com.website.surotec_academy.enums.NewsStatus;
 import com.website.surotec_academy.repository.NewsRepository;
 import com.website.surotec_academy.service.NewsService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;

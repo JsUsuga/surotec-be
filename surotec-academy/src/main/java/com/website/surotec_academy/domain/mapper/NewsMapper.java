@@ -1,7 +1,7 @@
 package com.website.surotec_academy.domain.mapper;
 
-import com.website.surotec_academy.domain.dto.NewsCreatedDto;
-import com.website.surotec_academy.domain.dto.NewsDto;
+import com.website.surotec_academy.domain.dto.news.NewsCreatedDto;
+import com.website.surotec_academy.domain.dto.news.NewsDto;
 import com.website.surotec_academy.entity.NewsEntity;
 
 public class NewsMapper {
