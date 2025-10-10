@@ -5,6 +5,7 @@ import com.website.surotec_academy.domain.dto.AcademyProjectDto;
 import com.website.surotec_academy.domain.mapper.AcademyProjectMapper;
 import com.website.surotec_academy.entity.AcademyProjectEntity;
 import com.website.surotec_academy.entity.EmployeeEntity;
+import com.website.surotec_academy.enums.AcademyProjectStatus;
 import com.website.surotec_academy.repository.AcademyProjectRepository;
 import com.website.surotec_academy.repository.EmployeeRepository;
 import com.website.surotec_academy.service.AcademyProjectService;
@@ -12,6 +13,7 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -23,17 +25,27 @@ public class AcademyProjectServiceImpl implements AcademyProjectService {
 
     @Override
     public AcademyProjectCreatedDto createProject(AcademyProjectDto dto) {
+
         // Validar que el empleado exista
         EmployeeEntity employee = employeeRepository.findById(dto.employeeId())
-                .orElseThrow(() -> new EntityNotFoundException("Empleado no encontrado con ID: " + dto.employeeId()));
+                .orElseThrow(() -> new EntityNotFoundException(
+                        "Empleado no encontrado con ID: " + dto.employeeId()
+                ));
 
-        // Convertir DTO a entidad
+        // Convertir el DTO a entidad (usando el mapper)
         AcademyProjectEntity entity = AcademyProjectMapper.toEntity(dto, employee);
 
-        // Guardar en la base de datos
-        AcademyProjectEntity saved = academyProjectRepository.save(entity);
+        // Verificar el estado del proyecto
+        // Si viene nulo o vacío, establecer por defecto DRAFT
+        if (entity.getStatus() == null) {
+            entity.setStatus(AcademyProjectStatus.DRAFT);
+        }
 
-        // Retornar el DTO de creación
+        // Guardar el proyecto en la base de datos
+        AcademyProjectEntity saved = academyProjectRepository.save(entity);
+        entity.setPublishDate(LocalDateTime.now());
+
+        // Retornar un DTO con el ID del nuevo registro
         return AcademyProjectMapper.toCreatedDto(saved);
     }
 
