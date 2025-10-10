@@ -9,6 +9,7 @@ import com.website.surotec_academy.enums.StudentStatus;
 import com.website.surotec_academy.repository.StudentRepository;
 import com.website.surotec_academy.repository.UserRepository;
 import com.website.surotec_academy.service.StudentService;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -132,7 +133,7 @@ public class StudentServiceImpl implements StudentService {
         }
     }
 
-    @Override
+   @Override
     public void deleteStudent(Long id) {
         log.info("Deleting (inactivating) student with id {}", id);
         try {
@@ -150,4 +151,5 @@ public class StudentServiceImpl implements StudentService {
             throw new RuntimeException("Error deleting student: " + e.getMessage(), e);
         }
     }
+
 }

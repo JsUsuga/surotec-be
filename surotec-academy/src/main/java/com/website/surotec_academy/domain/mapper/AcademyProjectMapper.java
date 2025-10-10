@@ -1,8 +1,8 @@
 package com.website.surotec_academy.domain.mapper;
 
 
-import com.website.surotec_academy.domain.dto.AcademyProjectDto;
-import com.website.surotec_academy.domain.dto.AcademyProjectCreatedDto;
+import com.website.surotec_academy.domain.dto.AcademyProject.AcademyProjectDto;
+import com.website.surotec_academy.domain.dto.AcademyProject.AcademyProjectCreatedDto;
 import com.website.surotec_academy.entity.AcademyProjectEntity;
 import com.website.surotec_academy.entity.EmployeeEntity;
 import com.website.surotec_academy.enums.AcademyProjectStatus;
@@ -39,11 +39,8 @@ public class AcademyProjectMapper {
         entity.setCaption(dto.caption());
         entity.setPublishDate(dto.publishDate());
 
-        if (dto.status() == null) {
-            entity.setStatus(AcademyProjectStatus.DRAFT);
-        } else {
-            entity.setStatus(dto.status());
-        }
+        // Si el DTO trae un estado, úsalo; si no, pon DRAFT
+        entity.setStatus(dto.status() != null ? dto.status() : AcademyProjectStatus.DRAFT);
 
         return entity;
     }

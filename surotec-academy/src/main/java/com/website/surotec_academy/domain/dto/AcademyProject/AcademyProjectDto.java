@@ -1,4 +1,4 @@
-package com.website.surotec_academy.domain.dto;
+package com.website.surotec_academy.domain.dto.AcademyProject;
 
 import com.website.surotec_academy.enums.AcademyProjectStatus;
 import jakarta.validation.constraints.NotNull;

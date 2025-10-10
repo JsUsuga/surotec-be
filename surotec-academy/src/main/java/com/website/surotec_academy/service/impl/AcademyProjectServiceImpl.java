@@ -1,7 +1,7 @@
 package com.website.surotec_academy.service.impl;
 
-import com.website.surotec_academy.domain.dto.AcademyProjectCreatedDto;
-import com.website.surotec_academy.domain.dto.AcademyProjectDto;
+import com.website.surotec_academy.domain.dto.AcademyProject.AcademyProjectCreatedDto;
+import com.website.surotec_academy.domain.dto.AcademyProject.AcademyProjectDto;
 import com.website.surotec_academy.domain.mapper.AcademyProjectMapper;
 import com.website.surotec_academy.entity.AcademyProjectEntity;
 import com.website.surotec_academy.entity.EmployeeEntity;
@@ -32,20 +32,16 @@ public class AcademyProjectServiceImpl implements AcademyProjectService {
                         "Empleado no encontrado con ID: " + dto.employeeId()
                 ));
 
-        // Convertir el DTO a entidad (usando el mapper)
+        // Convertir el DTO a entidad
         AcademyProjectEntity entity = AcademyProjectMapper.toEntity(dto, employee);
 
-        // Verificar el estado del proyecto
-        // Si viene nulo o vacío, establecer por defecto DRAFT
+        // Si no se define estado, aplicar DRAFT
         if (entity.getStatus() == null) {
             entity.setStatus(AcademyProjectStatus.DRAFT);
         }
 
-        // Guardar el proyecto en la base de datos
         AcademyProjectEntity saved = academyProjectRepository.save(entity);
-        entity.setPublishDate(LocalDateTime.now());
 
-        // Retornar un DTO con el ID del nuevo registro
         return AcademyProjectMapper.toCreatedDto(saved);
     }
 
