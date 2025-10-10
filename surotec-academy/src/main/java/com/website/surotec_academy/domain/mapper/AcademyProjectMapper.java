@@ -5,8 +5,8 @@ import com.website.surotec_academy.domain.dto.AcademyProjectDto;
 import com.website.surotec_academy.domain.dto.AcademyProjectCreatedDto;
 import com.website.surotec_academy.entity.AcademyProjectEntity;
 import com.website.surotec_academy.entity.EmployeeEntity;
+import com.website.surotec_academy.enums.AcademyProjectStatus;
 
-import java.time.LocalDateTime;
 
 public class AcademyProjectMapper {
 
@@ -37,8 +37,13 @@ public class AcademyProjectMapper {
         entity.setDescription(dto.description());
         entity.setImageUrl(dto.imageUrl());
         entity.setCaption(dto.caption());
-        entity.setPublishDate(dto.publishDate() != null ? dto.publishDate() : LocalDateTime.now());
-        entity.setStatus(dto.status());
+        entity.setPublishDate(dto.publishDate());
+
+        if (dto.status() == null) {
+            entity.setStatus(AcademyProjectStatus.DRAFT);
+        } else {
+            entity.setStatus(dto.status());
+        }
 
         return entity;
     }
@@ -55,6 +60,7 @@ public class AcademyProjectMapper {
         return AcademyProjectCreatedDto.builder()
                 .id(entity.getId())
                 .title(entity.getTitle())
+                .status(entity.getStatus())
                 .build();
     }
 }

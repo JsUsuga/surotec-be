@@ -11,32 +11,34 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/academy-projects")
+@RequestMapping("/api/projects")
 @RequiredArgsConstructor
-
 public class AcademyProjectController {
+
     private final AcademyProjectService academyProjectService;
 
     @PostMapping
-    public ResponseEntity<AcademyProjectCreatedDto> createProject(@Valid @RequestBody AcademyProjectDto dto) {
-        AcademyProjectCreatedDto created = academyProjectService.createProject(dto);
-        return ResponseEntity.ok(created);
+    public ResponseEntity<AcademyProjectCreatedDto> create(@RequestBody @Valid AcademyProjectDto dto) {
+        return ResponseEntity.ok(academyProjectService.createProject(dto));
     }
 
     @GetMapping
-    public ResponseEntity<List<AcademyProjectDto>> getAllProjects() {
-        List<AcademyProjectDto> projects = academyProjectService.getAllProjects();
-        return ResponseEntity.ok(projects);
+    public ResponseEntity<List<AcademyProjectDto>> getAll() {
+        return ResponseEntity.ok(academyProjectService.getAllProjects());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AcademyProjectDto> getProjectById(@PathVariable Long id) {
-        AcademyProjectDto project = academyProjectService.getProjectById(id);
-        return ResponseEntity.ok(project);
+    public ResponseEntity<AcademyProjectDto> getById(@PathVariable Long id) {
+        return ResponseEntity.ok(academyProjectService.getProjectById(id));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<AcademyProjectDto> update(@PathVariable Long id, @RequestBody AcademyProjectDto dto) {
+        return ResponseEntity.ok(academyProjectService.updateProject(id, dto));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteProject(@PathVariable Long id) {
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
         academyProjectService.deleteProject(id);
         return ResponseEntity.noContent().build();
     }
