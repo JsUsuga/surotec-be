@@ -38,9 +38,7 @@ CREATE TABLE donation (
 );
 
 -- TABLAS DE ROLES
-CREATE TABLE role (
-    name VARCHAR(50) PRIMARY KEY
-);
+
 
 CREATE TABLE employee_role (
 	id INT,
