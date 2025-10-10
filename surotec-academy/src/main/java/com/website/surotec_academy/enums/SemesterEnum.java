@@ -1,8 +1,12 @@
 package com.website.surotec_academy.enums;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public enum SemesterEnum {
-    FIRST("1"),
-    SECOND("2");
+
+    FIRST("FIRST"),
+    SECOND("SECOND");
 
     private final String value;
 
@@ -10,33 +14,30 @@ public enum SemesterEnum {
         this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
         return value;
     }
 
-    /**
-     * Convierte un input a SemesterEnum.
-     * Acepta:
-     *  - los valores definidos ("1", "2")
-     *  - los nombres del enum ("FIRST", "SECOND") sin importar mayúsculas/minúsculas
-     *
-     * Lanza IllegalArgumentException si no reconoce el valor.
-     */
+    @JsonCreator
     public static SemesterEnum fromValue(String value) {
-        if (value == null) {
-            throw new IllegalArgumentException("Semester value is null");
+        if (value == null || value.isBlank()) {
+            throw new IllegalArgumentException("Semester value cannot be null or empty");
         }
-        String v = value.trim();
+
+        String normalized = value.trim().toUpperCase();
+
         for (SemesterEnum semester : SemesterEnum.values()) {
-            if (semester.value.equals(v) || semester.name().equalsIgnoreCase(v)) {
+            if (semester.value.equalsIgnoreCase(normalized) || semester.name().equalsIgnoreCase(normalized)) {
                 return semester;
             }
         }
-        throw new IllegalArgumentException("Invalid semester value: " + value);
+
+        throw new IllegalArgumentException("Invalid semester value: " + value + ". Valid values: FIRST, SECOND");
     }
 
     @Override
     public String toString() {
-        return name();
+        return value;
     }
 }
