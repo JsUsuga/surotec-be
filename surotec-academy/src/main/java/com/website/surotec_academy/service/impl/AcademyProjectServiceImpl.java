@@ -1,7 +1,7 @@
 package com.website.surotec_academy.service.impl;
 
-import com.website.surotec_academy.domain.dto.AcademyProjectCreatedDto;
-import com.website.surotec_academy.domain.dto.AcademyProjectDto;
+import com.website.surotec_academy.domain.dto.academyproject.AcademyProjectCreatedDto;
+import com.website.surotec_academy.domain.dto.academyproject.AcademyProjectDto;
 import com.website.surotec_academy.domain.mapper.AcademyProjectMapper;
 import com.website.surotec_academy.entity.AcademyProjectEntity;
 import com.website.surotec_academy.entity.EmployeeEntity;
