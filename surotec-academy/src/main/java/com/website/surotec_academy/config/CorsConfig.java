@@ -15,9 +15,9 @@ public class CorsConfig {
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
                         .allowedOrigins(
-                                "http://127.0.0.1:5500",  // Tu front (Live Server)
-                                "http://localhost:5500",  // Otra variante del mismo front
-                                "http://localhost:3000"   // Si algún día usas React
+                                "http://127.0.0.1:5500",
+                                "http://localhost:5500",
+                                "http://localhost:3000"
                         )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
