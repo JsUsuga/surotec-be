@@ -1,4 +1,4 @@
-package com.website.surotec_academy.domain.dto;
+package com.website.surotec_academy.domain.dto.academyproject;
 
 import com.website.surotec_academy.enums.AcademyProjectStatus;
 import lombok.Builder;
