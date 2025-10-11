@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 
 import java.util.List;
 
+@CrossOrigin(origins = {"http://127.0.0.1:5500", "http://localhost:5500"})
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -131,4 +132,42 @@ public class UserController {
     public List<UserDto> getUserByStatus(@RequestParam("status") String status) {
         return userService.getUsersByStatus(status);
     }
+
+
+    @PostMapping("/login")
+    public ResponseEntity<?> loginUser(@RequestBody UserDto userDto) {
+        if (userDto == null || userDto.username() == null || userDto.password() == null) {
+            return ResponseEntity
+                    .badRequest()
+                    .body("El username y password son requeridos");
+        }
+
+        // Busca usuario por username directamente (más eficiente que recorrer todos)
+        var user = userService.getAllUsers().stream()
+                .filter(u -> userDto.username().equals(u.getUsername()))
+                .findFirst()
+                .orElse(null);
+
+        if (user == null) {
+            return ResponseEntity
+                    .status(HttpStatus.UNAUTHORIZED)
+                    .body("Usuario no encontrado");
+        }
+
+        // Verifica la contraseña
+        if (!user.getPassword().equals(userDto.password())) {
+            return ResponseEntity
+                    .status(HttpStatus.UNAUTHORIZED)
+                    .body("Contraseña incorrecta");
+        }
+
+        // Convierte a DTO para respuesta
+        var userDtoResponse = UserMapper.toDto(user);
+
+        // Devuelve el usuario (el frontend puede guardarlo en localStorage)
+        return ResponseEntity.ok(userDtoResponse);
+    }
+
+
+
 }
