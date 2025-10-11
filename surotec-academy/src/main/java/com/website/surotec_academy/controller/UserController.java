@@ -142,7 +142,6 @@ public class UserController {
                     .body("El username y password son requeridos");
         }
 
-        // Busca usuario por username directamente (más eficiente que recorrer todos)
         var user = userService.getAllUsers().stream()
                 .filter(u -> userDto.username().equals(u.getUsername()))
                 .findFirst()
@@ -154,17 +153,14 @@ public class UserController {
                     .body("Usuario no encontrado");
         }
 
-        // Verifica la contraseña
         if (!user.getPassword().equals(userDto.password())) {
             return ResponseEntity
                     .status(HttpStatus.UNAUTHORIZED)
                     .body("Contraseña incorrecta");
         }
 
-        // Convierte a DTO para respuesta
         var userDtoResponse = UserMapper.toDto(user);
 
-        // Devuelve el usuario (el frontend puede guardarlo en localStorage)
         return ResponseEntity.ok(userDtoResponse);
     }
 

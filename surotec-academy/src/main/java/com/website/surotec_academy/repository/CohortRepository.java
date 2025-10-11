@@ -6,5 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CohortRepository extends JpaRepository<CohortEntity, Long> {
-    // Aquí puedes agregar consultas personalizadas si las necesitas más adelante
 }

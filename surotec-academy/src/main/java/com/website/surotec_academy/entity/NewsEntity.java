@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 @Table(name = "news")
 public class NewsEntity {
 
-    //Columnas en la tabla
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -36,7 +35,6 @@ public class NewsEntity {
     @Column(nullable = false)
     private NewsStatus status = NewsStatus.DRAFT;
 
-    //Getters y Setters
     public int getId() {
         return id;
     }

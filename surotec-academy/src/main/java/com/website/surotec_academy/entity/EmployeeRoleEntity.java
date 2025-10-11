@@ -16,12 +16,12 @@ public class EmployeeRoleEntity {
     private EmployeeRoleId id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("employeeId") // Vincula con el campo 'employeeId' de la clave
+    @MapsId("employeeId")
     @JoinColumn(name = "employee_id")
     private EmployeeEntity employee;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("roleId") // Vincula con el campo 'roleId' de la clave
+    @MapsId("roleId")
     @JoinColumn(name = "role_id")
     private RolesEntity role;
 }

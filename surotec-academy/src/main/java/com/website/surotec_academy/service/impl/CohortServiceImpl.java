@@ -21,7 +21,6 @@ public class CohortServiceImpl implements CohortService {
 
     private final CohortRepository cohortRepository;
 
-    // ✅ Solo inyectamos el repository (el mapper se usa estáticamente)
     public CohortServiceImpl(CohortRepository cohortRepository) {
         this.cohortRepository = cohortRepository;
         log.info("CohortServiceImpl initialized with CohortRepository");
@@ -85,7 +84,6 @@ public class CohortServiceImpl implements CohortService {
                         return new EntityNotFoundException("Cohort not found with id: " + id);
                     });
 
-            // ✅ Actualizamos solo los campos editables
             existing.setYear(cohortDto.year());
             existing.setSemester(cohortDto.semester());
             existing.setDescription(cohortDto.description());

@@ -15,7 +15,6 @@ public class RolesMapper {
      */
     public static RolesDto toDto(RolesEntity entity) {
         if (entity == null) return null;
-        // Usamos el constructor del record directamente, ya que es más simple que el builder para este caso
         return new RolesDto(
                 entity.getId(),
                 entity.getName(),
@@ -60,7 +59,6 @@ public class RolesMapper {
     public static void updateEntityFromDto(RolesEntity entity, RolesDto dto) {
         if (dto == null || entity == null) return;
 
-        // Solo actualiza los campos si no son nulos en el DTO
         if (dto.name() != null) {
             entity.setName(dto.name());
         }
