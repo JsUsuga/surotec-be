@@ -36,7 +36,6 @@ public class DonationController {
         this.donationMapper = donationMapper;
     }
 
-    // ✅ Obtener todas las donaciones
     @Operation(summary = "Obtener todas las donaciones", description = "Devuelve una lista de todas las donaciones registradas.")
     @ApiResponse(responseCode = "200", description = "Lista obtenida exitosamente",
             content = @Content(schema = @Schema(implementation = DonationDto.class)))
@@ -49,7 +48,7 @@ public class DonationController {
         return ResponseEntity.ok(dtoList);
     }
 
-    // ✅ Obtener una donación por su ID
+
     @Operation(summary = "Obtener una donación por ID", description = "Devuelve los detalles de una donación específica.")
     @ApiResponse(responseCode = "200", description = "Donación encontrada exitosamente",
             content = @Content(schema = @Schema(implementation = DonationDto.class)))
@@ -61,7 +60,7 @@ public class DonationController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // ✅ Crear una nueva donación
+
     @Operation(summary = "Crear una donación", description = "Crea una nueva donación asociada a un usuario existente.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Donación creada exitosamente",
@@ -91,7 +90,7 @@ public class DonationController {
                         .build());
     }
 
-    // ✅ Eliminar una donación
+
     @Operation(summary = "Eliminar una donación", description = "Elimina una donación existente por su ID.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "204", description = "Donación eliminada exitosamente"),
