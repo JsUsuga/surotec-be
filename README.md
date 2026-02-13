@@ -1,7 +1,7 @@
-📘 Documentación de la API
+Documentación de la API
 Esta API expone un conjunto de endpoints REST para la gestión de usuarios, estudiantes, cohortes académicas, empleados, roles, proyectos académicos, noticias y donaciones. Está documentada mediante OpenAPI 3.0 y puede explorarse usando Swagger.
 ________________________________________
-🚀 Información General
+ Información General
 •	Versión OpenAPI: 3.0
 •	Base URL: http://localhost:8086
 •	Formato: JSON
@@ -9,8 +9,8 @@ ________________________________________
 La documentación interactiva se encuentra disponible en:
 /v3/api-docs
 ________________________________________
-📂 Módulos y Endpoints
-🧑‍🏫 Cohort Controller
+Módulos y Endpoints
+Cohort Controller
 Operaciones relacionadas con las cohortes académicas.
 Método	Endpoint	Descripción
 GET	/api/cohorts	Obtener todas las cohortes
@@ -19,7 +19,7 @@ POST	/api/cohorts	Crear una nueva cohorte
 PUT	/api/cohorts/{id}	Actualizar una cohorte existente
 DELETE	/api/cohorts/{id}	Eliminar una cohorte por ID
 ________________________________________
-👤 User Controller
+ User Controller
 Gestión de usuarios del sistema.
 Método	Endpoint	Descripción
 GET	/users	Obtener todos los usuarios
@@ -30,7 +30,7 @@ DELETE	/users/{idUser}	Eliminar un usuario por ID
 POST	/users/login	Autenticación de usuario
 GET	/users/status	Obtener usuarios por estado
 ________________________________________
-🎓 Student Controller
+Student Controller
 Gestión de estudiantes.
 Método	Endpoint	Descripción
 GET	/students	Obtener todos los estudiantes
@@ -40,7 +40,7 @@ PUT	/students/{idStudent}	Actualizar un estudiante
 DELETE	/students/{idStudent}	Eliminar un estudiante
 GET	/students/status	Obtener estudiantes por estado
 ________________________________________
-🛡️ Roles Controller
+ Roles Controller
 Gestión de roles del sistema.
 Método	Endpoint	Descripción
 GET	/api/v1/roles	Obtener todos los roles
@@ -49,7 +49,7 @@ POST	/api/v1/roles	Crear un rol
 PUT	/api/v1/roles/{id}	Actualizar un rol
 DELETE	/api/v1/roles/{id}	Eliminar un rol
 ________________________________________
-📚 Academy Project Controller
+ Academy Project Controller
 Gestión de proyectos académicos.
 Método	Endpoint	Descripción
 GET	/api/projects	Obtener todos los proyectos
@@ -68,7 +68,7 @@ DELETE	/api/news/{id}	Eliminar una noticia
 GET	/api/news/status/{status}	Obtener noticias por estado
 GET	/api/news/employee/{employeeId}	Obtener noticias por empleado
 ________________________________________
-🧑‍💼 Employee Controller
+ Employee Controller
 Gestión de empleados.
 Método	Endpoint	Descripción
 GET	/api/employees	Obtener todos los empleados
@@ -77,7 +77,7 @@ POST	/api/employees	Crear un empleado
 PUT	/api/employees/{id}	Actualizar un empleado
 DELETE	/api/employees/{id}	Eliminar un empleado
 ________________________________________
-💰 Donation Controller
+ Donation Controller
 Gestión de donaciones.
 Método	Endpoint	Descripción
 GET	/donations	Obtener todas las donaciones
@@ -85,7 +85,7 @@ GET	/donations/{idDonation}	Obtener una donación por ID
 POST	/donations	Crear una donación
 DELETE	/donations/{idDonation}	Eliminar una donación
 ________________________________________
-🔗 Employee Role Controller
+ Employee Role Controller
 Asignación de roles a empleados.
 Método	Endpoint	Descripción
 POST	/api/v1/employees/{employeeId}/roles/{roleId}	Asignar rol a empleado
@@ -108,10 +108,10 @@ Los siguientes DTOs y entidades son utilizados en la API:
 •	DonationCreateDto
 •	DonationCreatedDto
 ________________________________________
-✅ Notas Finales
+ Notas Finales
 •	Todos los endpoints trabajan con JSON.
 •	Los IDs se envían como path variables.
 •	Se recomienda usar Swagger para probar los endpoints.
 •	La API puede extenderse fácilmente siguiendo la estructura actual de controladores y DTOs.
 ________________________________________
-📌 Documento pensado para ser usado como README.md del proyecto.
+
